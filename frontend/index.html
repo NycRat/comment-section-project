@@ -1,31 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
     <head>
-        <script src="script.js" defer></script>
-        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-        <link rel="manifest" href="./favicon/site.webmanifest">
+        <script src="main.js" defer></script>
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./favicon/favicon-16x16.png"
+        />
+        <link rel="icon" type="image/x-icon" href="./favicon/favicon.ico" />
+        <link rel="manifest" href="./favicon/site.webmanifest" />
     </head>
     <body>
         <h1>My first blog post!</h1>
 
         <p>
-            Hey everyone, I wanted to write about something today and I figured, why
-            not publish it online? So here I am, writing to you guys. I hope you'll
-            enjoy reading this blog post!
+            Hey everyone, I wanted to write about something today and I figured,
+            why not publish it online? So here I am, writing to you guys. I hope
+            you'll enjoy reading this blog post!
         </p>
 
         <p>
-            To begin, I think of myself as a resident of the Internet. There is no
-            place in which I feel more of a sense of belonging.
-        <a href="#">Read more...</a>
-
+            To begin, I think of myself as a resident of the Internet. There is
+            no place in which I feel more of a sense of belonging.
+            <a href="#">Read more...</a>
         </p>
-        
+
+        <form id="commentForm">
+            <label for="commentInputName">Name:</label>
+            <input type="text" id="commentInputName" />
+            <label for="commentInputComment">Comment:</label>
+            <input type="text" id="commentInputComment" />
+            <button type="submit" id="submitCommentButton">Submit</button>
+        </form>
+
         <div id="comments"></div>
     </body>
 </html>
-
-
