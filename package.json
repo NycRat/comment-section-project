@@ -1,0 +1,9 @@
+{
+    "name": "comment-section-project",
+    "scripts": {
+        "dev": "npx nodemon --watch backend backend/anything.js & npx serve frontend"
+    },
+    "workspaces": [
+        "shared"
+    ]
+}

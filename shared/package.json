@@ -1,0 +1,4 @@
+{
+    "exports": "./types.js",
+    "type": "module"
+}
