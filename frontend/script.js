@@ -6,7 +6,7 @@ const getComments = async () => {
         method: "POST",
     });
 
-    return res
+    return res;
 };
 
 const putComments = async () => {
@@ -28,5 +28,5 @@ const postComment = async (comment) => {
         body: JSON.stringify(comment),
     });
 
-    return res
+    return res;
 };

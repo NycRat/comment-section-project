@@ -1,4 +1,5 @@
 import express, { text } from "express"; //!
+import { Comment } from "shared";
 
 import cors from "cors";
 const app = express();
@@ -6,13 +7,6 @@ const port = 3600;
 
 app.use(cors());
 app.use(text());
-
-class Comment {
-    id = undefined;
-    name = "";
-    comment = "";
-    replyto = null;
-}
 
 let commentSection = [];
 
