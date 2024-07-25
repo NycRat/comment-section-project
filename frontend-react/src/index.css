@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 250;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+body {
+    padding: 25px;
+    background-color: #fafffc;
+    color: #292b2a;
+}
+
+.comment:hover {
+    background-color: #eeeeee;
+}
+
+.selected-comment {
+    background-color: yellow;
+}
+
+.comment:hover .reply-button {
+    display: inline;
+}
+
+.selected-comment .reply-button {
+    background-color: yellow;
+    display: inline;
+}
+
+.reply-button {
+    all: unset;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    display: none;
+}

@@ -3,7 +3,7 @@ import { Comment } from "shared";
 
 import cors from "cors";
 const app = express();
-const port = 3600;
+const port = 3001;
 
 app.use(cors());
 app.use(text());
@@ -15,10 +15,13 @@ app.get("/", (request, response) => {
 });
 
 app.post("/post", (request, response) => {
-    let comment = new Comment();
+    const comment = JSON.parse(request.body);
     comment.id = commentSection.length;
-    comment.name = "Abraham";
-    comment.comment = JSON.stringify(request.body);
+
+    // let comment = new Comment();
+    // comment.id = commentSection.length;
+    // comment.name = "Abraham";
+    // comment.comment = JSON.stringify(request.body);
 
     commentSection.push(comment);
 
