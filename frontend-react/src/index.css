@@ -40,3 +40,8 @@ body {
     cursor: pointer;
     display: none;
 }
+
+.reply-section {
+    padding-left: 30px;
+    border-left: 1px solid black;
+}

@@ -1,6 +1,7 @@
 import { getComments, handlePostComment } from "./api";
 import { Comment } from "shared";
 import { useEffect, useState } from "react";
+import CommentComponent from "./Comment";
 
 const App = () => {
     const [comments, setComments] = useState([]);
@@ -30,6 +31,67 @@ const App = () => {
         setCurrentComment({ ...currentComment, comment: "" });
     };
 
+    const handleReplySelect = (id) => {
+        if (currentComment.replyto === id) {
+            setCurrentComment({
+                ...currentComment,
+                replyto: null,
+            });
+        } else {
+            setCurrentComment({
+                ...currentComment,
+                replyto: id,
+            });
+        }
+    };
+
+    const renderComments = () => {
+        let prevCommentIDs = new Map();
+        let aaa = [];
+
+        const ahksdfasf = new Map();
+        comments.map((c) => {
+            ahksdfasf.set(c.id, c);
+        });
+
+        // [{root: 12, replies: [{...}, {...}]}, {...}]
+        for (let i = 0; i < comments.length; i++) {
+            let thing = {
+                root: comments[i].id,
+                replies: [],
+            };
+            prevCommentIDs.set(comments[i].id, thing);
+            if (prevCommentIDs.has(comments[i].replyto)) {
+                prevCommentIDs.get(comments[i].replyto).replies.push(thing);
+            } else {
+                aaa.push(thing);
+            }
+        }
+
+        const renderAaaa = (thing) => {
+            return (
+                <div key={thing.root}>
+                    <CommentComponent
+                        comment={ahksdfasf.get(thing.root)}
+                        className={
+                            currentComment.replyto === thing.root
+                                ? "selected-comment comment"
+                                : "comment"
+                        }
+                        onReplySelect={() => handleReplySelect(thing.root)}
+                    />
+                    {thing.replies.length !== 0 && (
+                        <div className="reply-section">
+                            {thing.replies.map((thing2) => renderAaaa(thing2))}
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        return <div>{aaa.map((thing) => renderAaaa(thing))}</div>;
+    };
+
     return (
         <div>
             <h1>Comment Section</h1>
@@ -55,31 +117,20 @@ const App = () => {
                 <input type="submit" />
             </form>
             ---
-            <div>
+            {renderComments()}
+            {/* <div>
                 {comments.map((comment) => (
-                    <div
-                        key={comment.id}
+                    <CommentComponent
+                        comment={comment}
                         className={
                             currentComment.replyto === comment.id
                                 ? "selected-comment comment"
                                 : "comment"
                         }
-                    >
-                        {comment.name}: {comment.comment}{" "}
-                        <button
-                            className="reply-button"
-                            onClick={() =>
-                                setCurrentComment({
-                                    ...currentComment,
-                                    replyto: comment.id,
-                                })
-                            }
-                        >
-                            (reply)
-                        </button>
-                    </div>
+                        onReplySelect={() => handleReplySelect(comment.id)}
+                    />
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };
