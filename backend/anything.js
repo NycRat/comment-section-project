@@ -3,7 +3,7 @@ import { Comment } from "shared";
 
 import cors from "cors";
 const app = express();
-const port = 3600;
+const port = 3001;
 
 app.use(cors());
 app.use(text());

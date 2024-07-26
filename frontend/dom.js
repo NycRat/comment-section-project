@@ -1,4 +1,7 @@
-export const putComments = async (comments) => {
+import { Comment } from "shared"
+import { postComment } from "./api.js"
+
+export const putComments = (comments) => {
     const commentsDiv = document.getElementById("comments");
     for (let i = 0; i < comments.length; i++) {
         const comment = comments[i];
@@ -12,4 +15,11 @@ export const putComments = async (comments) => {
         commentDiv.innerHTML = commentContent;
         commentsDiv.append(commentDiv);
     }
+};
+
+export const handlePostComment = () => {
+    const comment = new Comment();
+    comment.name = document.getElementById("commentInputName").value;
+    comment.comment = document.getElementById("commentInputComment").value;
+    postComment(comment);
 };
